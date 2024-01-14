@@ -1,0 +1,33 @@
+ALL : gredit.exe point.exe lineman.exe
+System dos
+
+mouse.obj : mouse.c
+          wcc -ml mouse.c
+
+sprite.obj : sprite.c
+           wcc -ml sprite.c
+
+gredit.obj : gredit.c some.c
+             wcc -ml gredit.c
+
+gredit.exe : gredit.obj mouse.obj sprite.obj
+             wlink File gredit.obj, mouse.obj,sprite.obj Name gredit System dos
+
+keysgame.obj : keysgame.c
+             wcc -ml keysgame.c
+
+point.obj : point.c
+             wcc -ml point.c
+
+point.exe : point.obj keysgame.obj
+             wlink File point.obj, keysgame.obj Name point System dos
+
+
+lineman.obj : lineman.c
+             wcc -ml lineman.c
+
+lineman.exe : lineman.obj sprite.obj keysgame.obj
+             wlink File lineman.obj, sprite.obj, keysgame.obj Name lineman System dos
+
+
+
